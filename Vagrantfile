@@ -64,6 +64,7 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell",  privileged: false, inline: <<-SHELL
       git clone https://github.com/rpstreef/langchain-setup /home/vagrant/langchain
       cd /home/vagrant/langchain/docker
+      mkdir /home/vagrant/langchain-app # we link the container data with this folder, it needs to exist first
       docker-compose up -d
     SHELL
 
