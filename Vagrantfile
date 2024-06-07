@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
     SHELL
 
     # Git clone langchain-setup, and run the containers
-    config.vm.provision "shell", inline: <<-SHELL
+    config.vm.provision "shell",  privileged: false, inline: <<-SHELL
       git clone https://github.com/rpstreef/langchain-setup /home/vagrant/langchain
       cd /home/vagrant/langchain/docker
       docker-compose up -d
@@ -76,7 +76,7 @@ Vagrant.configure("2") do |config|
 
       [Service]
       Type=forking
-      WorkingDirectory=/home/vagrant/langflow/docker_example
+      WorkingDirectory=/home/vagrant/langchain/docker_example
       ExecStart=/usr/local/bin/docker-compose up -d
       TimeoutStartSec=0
       Restart=on-failure
