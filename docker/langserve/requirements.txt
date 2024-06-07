@@ -1,11 +1,6 @@
 langchain
 langchain-serve
-langchain-llms
-langchain-embeddings
-langchain-vectorstores
-langchain-retrievers
 langchain-openai
 langserve[all]
 fastapi
 faiss-cpu
-uvicorn
