@@ -1,0 +1,8 @@
+langchain
+langchain-serve
+langchain-llms
+langchain-embeddings
+langchain-vectorstores
+langchain-retrievers
+fastapi
+uvicorn

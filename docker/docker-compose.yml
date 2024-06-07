@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+  langflow:
+    image: langflowai/langflow:latest
+    ports:
+      - "7860:7860"
+    depends_on:
+      - postgres
+    environment:
+      - LANGFLOW_DATABASE_URL=postgresql://langflow:langflow@postgres:5432/langflow
+      # This variable defines where the logs, file storage, monitor data and secret keys are stored.
+      - LANGFLOW_CONFIG_DIR=/var/lib/langflow
+    volumes:
+      - langflow-data:/var/lib/langflow
+
+  langserve:
+    build:
+      context: ./langserve
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: uvicorn langserve:app --reload --host 0.0.0.0
+    environment:
+      LANGCHAIN_LOCAL_DOCS_PATH: /app/docs
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: langflow
+      POSTGRES_PASSWORD: langflow
+      POSTGRES_DB: langflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - langflow-postgres:/var/lib/postgresql/data
+
+  playground:
+    image: langchain/playground:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - LANGCHAIN_PLAYGROUND_HOST=0.0.0.0
+      - LANGCHAIN_PLAYGROUND_PORT=8000
+    volumes:
+      - ./playground:/app/playground
+
+volumes:
+  langflow-postgres:
+  langflow-data:
+  langserve:
+  playground:

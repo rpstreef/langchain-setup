@@ -60,10 +60,10 @@ Vagrant.configure("2") do |config|
       sudo newgrp docker
     SHELL
 
-    # Git clone Langflow, and run the containers
+    # Git clone langchain-setup, and run the containers
     config.vm.provision "shell", inline: <<-SHELL
-      git clone https://github.com/langflow-ai/langflow.git /home/vagrant/langflow
-      cd /home/vagrant/langflow/docker_example
+      git clone https://github.com/rpstreef/langchain-setup /home/vagrant/langchain
+      cd /home/vagrant/langchain/docker
       docker-compose up -d
     SHELL
 
