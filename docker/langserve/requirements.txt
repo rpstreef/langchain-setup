@@ -1,5 +1,4 @@
 langchain
-langchain-serve
 langchain-openai
 langserve[all]
 fastapi
