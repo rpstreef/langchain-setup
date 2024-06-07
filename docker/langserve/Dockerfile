@@ -10,10 +10,8 @@ USER myuser
 
 WORKDIR /app
 
-RUN git clone   .
+RUN git clone https://github.com/rpstreef/langflow-app.git .
 
 COPY requirements.txt .
 
-RUN pip install -r requirements.txt
-
-COPY . .
+RUN pip install -r requirements.txt && rm requirements.txt
