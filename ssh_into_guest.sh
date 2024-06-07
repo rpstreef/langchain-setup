@@ -17,8 +17,8 @@ fi
 
 # Wait for the VM to be fully booted
 while true; do
-  VBoxManage guestproperty get "$machine_name" "/VirtualBox/GuestInfo/OS/LoggedInUsers" | grep -q "0"
-  if [ $? -eq 0 ]; then
+  logged_in_users=$(VBoxManage guestproperty get "$machine_name" "/VirtualBox/GuestInfo/OS/LoggedInUsers")
+  if echo "$logged_in_users" | grep -q "0" || echo "$logged_in_users" | grep -q "1"; then
     echo "VM is fully booted"
     break
   else
