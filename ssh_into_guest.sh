@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # We deploy to the 'default' machine, if you have more machines, replace the machine name here.
-machine_name="langflow"
+machine_name="langchain"
 guest_machine_ip=$(VBoxManage guestproperty get "$machine_name" "/VirtualBox/GuestInfo/Net/1/V4/IP" | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
 username="vagrant" # Default vagrant username
 private_key="./.vagrant/machines/$machine_name/virtualbox/private_key" # SSH private key location

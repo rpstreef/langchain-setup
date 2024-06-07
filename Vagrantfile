@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.define "langflow" do |langflow|
+  config.vm.define "langchain" do |langchain|
     config.vm.box = "generic/ubuntu2204"
 
   # Create a forwarded port mapping which allows access to a specific port
@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
   
     # Customize the amount of memory on the VM:
       vb.memory = "8192"
-      vb.name = "langflow"
+      vb.name = "langchain"
       vb.cpus = 6
     end
   
