@@ -20,6 +20,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+      - "8000:8000"
     volumes:
       - .:/app
     working_dir: /app
@@ -37,16 +38,6 @@ services:
       - "5432:5432"
     volumes:
       - langflow-postgres:/var/lib/postgresql/data
-
-  playground:
-    image: langchain/playground:latest
-    ports:
-      - "8000:8000"
-    environment:
-      - LANGCHAIN_PLAYGROUND_HOST=0.0.0.0
-      - LANGCHAIN_PLAYGROUND_PORT=8000
-    volumes:
-      - ./playground:/app/playground
 
 volumes:
   langflow-postgres:
