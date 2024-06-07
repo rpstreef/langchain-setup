@@ -1,6 +1,7 @@
 version: "3.8"
 
 services:
+
   langflow:
     image: langflowai/langflow:latest
     ports:
@@ -15,7 +16,7 @@ services:
       - langflow-data:/var/lib/langflow
 
   langserve:
-    user: ${UID}:${GID}
+    user: 1000:1000
     build:
       context: ./langserve
       dockerfile: Dockerfile
