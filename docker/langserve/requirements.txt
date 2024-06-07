@@ -1,5 +1,4 @@
 langchain
 langchain-openai
 langserve[all]
-fastapi
 faiss-cpu
