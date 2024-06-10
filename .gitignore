@@ -1,2 +1,4 @@
 .vagrant
 .env
+.venv
+__pycache__

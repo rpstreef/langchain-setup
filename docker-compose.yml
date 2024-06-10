@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
 
   langflow:
@@ -8,25 +6,23 @@ services:
       - "7860:7860"
     depends_on:
       - postgres
+    env_file:
+      - .env
     environment:
       - LANGFLOW_DATABASE_URL=postgresql://langflow:langflow@postgres:5432/langflow
       # This variable defines where the logs, file storage, monitor data and secret keys are stored.
       - LANGFLOW_CONFIG_DIR=/var/lib/langflow
     volumes:
       - langflow-data:/var/lib/langflow
-
+    
   langserve:
-    user: 1000:1000
     build:
-      context: ./langserve
+      context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
       - "8000:8000"
     volumes:
-      - /home/vagrant/langchain-app:/app
-    working_dir: /app
-    command: uvicorn langflow_rag:app --reload --host 0.0.0.0
+      - langserve:/app
     env_file:
       - .env
     environment:

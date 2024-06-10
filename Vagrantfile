@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
     # documentation for more information about their specific syntax and use.
     config.vm.provision "shell", inline: <<-SHELL
       sudo apt-get update
-      sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common git
+      sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common git python3-poetry
       curl -sSf https://moncho.github.io/dry/dryup.sh | sudo sh
       sudo chmod 755 /usr/local/bin/dry
       curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -

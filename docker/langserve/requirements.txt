@@ -1,6 +1,0 @@
-langchain
-langchain-community
-langchain-openai
-langserve[all]
-langflow
-faiss-cpu
