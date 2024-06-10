@@ -28,7 +28,6 @@ Vagrant.configure("2") do |config|
   # Share an additional folder to the guest VM.
     config.vm.synced_folder "./data", "/vagrant_data"
 
-
     config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
     # vb.gui = true

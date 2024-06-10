@@ -1,54 +1,22 @@
 [tool.poetry]
-name = "LangChain from Langflow example"
-version = "0.0.1"
-description = ""
-authors = ["Rolf Streefkerk <hello@rolfstreefkerk.com>"]
-license = "MIT"
-readme = "README.md"
-packages = [{include = "app"}]
+name = "langchain-app"
+version = "0.1.0"
+description = "Runs a Webpage analysis AI from a LangFlow Agent Design"
+authors = ["Rolf Streefkerk <r.streefkerk@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8.1"
-langchain = "^0.2.0"
-langchain-community = "^0.2.0"
+python = "^3.10"
+fastapi = "^0.111.0"
+langserve = "^0.2.1"
+langchain-community = "^0.2.4"
 langchain-openai = "^0.1.8"
-langserve = { version = ">=0.0.6", extras = ["all"] }
-tiktoken = "^0.7.0"
-openai = "^1.26.0"
-fastapi = "^0.96.0"
-uvicorn = {extras = ["standard"], version = "^0.22.0"}
-pytest = "^7.4.0"
-pytest-asyncio = "^0.21.1"
-mypy = "^1.4.1"
-ruff = "^0.0.278"
-black = "^23.7.0"
-syrupy = "^4.0.2"
+langchain-text-splitters = "^0.2.1"
+uvicorn = "^0.30.1"
+langchain = "0.2.3"
 bs4 = "^0.0.2"
 faiss-cpu = "^1.8.0"
+sse-starlette = "^2.1.0"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.ruff]
-select = [
-  "E",  # pycodestyle
-  "F",  # pyflakes
-  "I",  # isort
-]
-
-[tool.mypy]
-ignore_missing_imports = "True"
-disallow_untyped_defs = "True"
-
-[tool.pytest.ini_options]
-# --strict-markers will raise errors on unknown marks.
-# https://docs.pytest.org/en/7.1.x/how-to/mark.html#raising-errors-on-unknown-marks
-#
-# https://docs.pytest.org/en/7.1.x/reference/reference.html
-# --strict-config       any warnings encountered while parsing the `pytest`
-#                       section of the configuration file raise errors.
-#
-# https://github.com/tophat/syrupy
-# --snapshot-warn-unused    Prints a warning on unused snapshots rather than fail the test suite.
-addopts = "--strict-markers --strict-config --durations=5 --snapshot-warn-unused"
