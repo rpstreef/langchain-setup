@@ -19,6 +19,7 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine and only allow access
   # via 127.0.0.1 to disable public access
     config.vm.network "forwarded_port", guest: 7860, host: 7860
+    config.vm.network "forwarded_port", guest: 8000, host: 8000
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -76,7 +77,7 @@ Vagrant.configure("2") do |config|
 
       [Service]
       Type=forking
-      WorkingDirectory=/home/vagrant/langchain/docker_example
+      WorkingDirectory=/home/vagrant/langchain/
       ExecStart=/usr/local/bin/docker-compose up -d
       TimeoutStartSec=0
       Restart=on-failure
